@@ -51,11 +51,11 @@ export class AuthService {
         // map(() => true),
 
         catchError(err => {
-          return this.setUnAuthorication();
+          // return this.setUnAuthorication();
           // console.log({err});
           // this._currentUser.set(null);
           // this._authStatus.set(AuthStatus.notAuthenticated);
-          // return throwError(() => err.error.message);
+          return throwError(() => err.error.message);
         })
       );
 
@@ -67,10 +67,10 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     // if (!token) return of(false);
-    if (!token) {
-      this.logout();
-      return of(false);
-    }
+    // if (!token) {
+    //   this.logout();
+    //   return of(false);
+    // }
 
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`);
